@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "custom_tabbar": "/components/custom-tabbar/custom-tabbar",
+    "Acomponent":"/components/Acomponent/Acomponent"
+  }
 }

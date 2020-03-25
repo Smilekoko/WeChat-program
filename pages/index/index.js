@@ -4,51 +4,51 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello koko',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+    jojo: "我不做人了",
+    choose_index: 0,
+    tabbar: {
+      "color": "#999999",
+      "selectedColor": "#7788dd",
+      "borderStyle": "#dcdcdc",
+      "backgroundColor": "#ffffff",
+      "list": [{
+          "key": "home",
+          "iconPath": "/images/icon_home.png",
+          "selectedIconPath": "/images/icon_home_active.png",
+          "text": "首页"
+        },
+        {
+          "key": "tag",
+          "iconPath": "/images/icon_gift.png",
+          "selectedIconPath": "/images/icon_gift_active.png",
+          "text": "礼品"
+        },
+        {
+          "key": "new",
+          "iconPath": "/images/icon_plus_big.png",
+          "iconType": "big overflow circle shadow",
+          "choose": "disable"
+        },
+        {
+          "key": "notebook",
+          "iconPath": "/images/icon_message.png",
+          "selectedIconPath": "/images/icon_message_active.png",
+          "text": "信息"
+        },
+        {
+          "key": "me",
+          "iconPath": "/images/icon_contract.png",
+          "selectedIconPath": "/images/icon_contract_active.png",
+          "text": "我"
         }
-      })
+      ]
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  onLoad: function() {
+
+  },
+  tabChange: function(e) {
+    console.log('你点击了一下')
   }
 })

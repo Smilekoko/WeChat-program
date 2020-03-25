@@ -1,0 +1,2 @@
+<!--components/Acomponents/Acomponents.wxml-->
+<text>{{paramPageToA}}</text>

@@ -1,0 +1,29 @@
+<!--pages/event/event.wxml-->
+<text>这里主要测试小程序的事件</text>
+<view style="background:deeppink" bindtap="tapName"> Click me! </view>
+<text>事件类型</text>
+<!--自基础库版本1.5.0起，bind和catch后可以紧跟一个冒号，其含义不变，如bind:tap、catch:touchstart。同时bind和catch前还可以加上capture-来表示捕获阶段。  -->
+<view style="background:deeppink" bind:longpress="longpressName">
+  longpress事件类型:指定了事件回调函数并触发了这个事件，tap事件将不被触发</view>
+<text>事件对象,包含该事件的一些属性</text>
+<view style="background:deeppink" data-customData="customData" bind:tap="getDataset">dataset属性:自定义数据以 data- 开头，多个单词由连字符 - 连接。大写自动转换成小写</view>
+<text>冒泡捕获:bind和capture-bind的含义分别代表事件的冒泡阶段和捕获阶段</text>
+<text>bind从内到外,bind事件绑定不会阻止冒泡事件向上冒泡</text>
+
+<view style="background:yellow" id="outer" bind:touchstart="bindOutView" capture-bind:touchstart="captureBindOutView">
+  outer view
+  <view style="background:deeppink" id="inner" bind:touchstart="bindInnertView"  capture-bind:touchstart="captureBindInnertView">
+    inner view
+  </view>
+</view>
+
+<text>capture-bind从外到内,(capture-catch将中断捕获阶段和取消冒泡阶段)</text>
+<view style="background:yellow" id="outer" bind:touchstart="bindOutView" capture-catch:touchstart="captureCatchOutView">
+  outer view
+  <view style="background:deeppink" id="inner" bind:touchstart="bindInnertView"  capture-catch:touchstart="captureCatchInnertView">
+    inner view
+  </view>
+</view>
+
+<text>其他组件自定义事件，如无特殊声明都是非冒泡事件</text>
+

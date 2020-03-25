@@ -1,0 +1,9 @@
+<!--components/custom-tabbar.wxml-->
+<cover-view class="c_tabbar">
+  <!-- list中默认属性有index -->
+  <view class="tabbar_item" wx:for="{{tabbar.list}}" wx:for-item="item" wx:for-index="index" data-selectedIndex="{{index}}" wx:key="key" bind:tap="change">
+    <image class="tabbar_item_img {{item.iconType?item.iconType:''}}" src="{{selected==index && !item.iconType ?item.selectedIconPath:item.iconPath}}">
+    </image>
+    <text wx:if="{{item.text&&!item.iconType}}" class="tabbar_item_title {{selected==index?'selected':''}}">{{item.text}}</text>
+  </view>
+</cover-view>
